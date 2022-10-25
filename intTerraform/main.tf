@@ -71,9 +71,9 @@ module "ec2_instances" {
   
 # }
 
-output "instance_ip" {
-  value = module.ec2_instances.web_server01.public_ip
+# output "instance_ip" {
+#   value = module.ec2_instances
 
-  # value = aws_instance.web_server01.public_ip
+#   # value = aws_instance.web_server01.public_ip
   
-}
+# }
