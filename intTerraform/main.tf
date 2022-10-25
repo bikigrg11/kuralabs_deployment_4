@@ -72,7 +72,7 @@ module "ec2_instances" {
 # }
 
 output "instance_ip" {
-  value = module.ec2_instances.public_ip
+  value = module.ec2_instances.public_ip[0]
 
   # value = module.aws_instance.web_server01.public_ip
   
