@@ -34,6 +34,17 @@ module "vpc" {
   tags = var.vpc_tags
 }
 
+module "web_server_sg" {
+  source              = "terraform-aws-modules/security-group/aws"
+  name                = "web-server"
+  description         = "Security group for web-server"
+  vpc_id              = module.vpc.vpc_id
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+  ingress_rules       = ["http-80-tcp"]
+}
+
+
+
 module "ec2_instances" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "3.5.0"
@@ -62,6 +73,7 @@ module "ec2_instances" {
 #   instance_type = "t2.micro"
 #   key_name = "ubuntu_ec2"
 #   vpc_security_group_ids = [aws_security_group.web_ssh.id]
+
 
 #   user_data = "${file("deploy.sh")}"
 
